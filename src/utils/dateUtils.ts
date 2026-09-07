@@ -15,7 +15,7 @@ export function calculatePregnancyWeek(currentDate: Date, dueDate: Date): number
   const diffDays = Math.floor(diffTime / msPerDay);
   
   if (diffDays < 0) return 0; // Before pregnancy starts
-  if (diffDays > 280) return 40; // Post due date capped at 40
+  if (diffDays > 308) return 44; // Post due date capped at 44 (1 month after birth)
   
   const weeks = Math.floor(diffDays / 7);
   return weeks === 0 ? 1 : weeks; // Return 1 for the first week
