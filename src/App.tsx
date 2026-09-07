@@ -179,7 +179,7 @@ function App() {
 
             {/* Timeline */}
             <div className="flex flex-col">
-              {actionItemsData.milestones.map((milestone: Milestone, index: number) => {
+              {actionItemsData.milestones.map((milestone: Milestone) => {
                 const isPast = currentWeek > milestone.endWeek;
                 const isCurrent = currentWeek >= milestone.startWeek && currentWeek <= milestone.endWeek;
                 
