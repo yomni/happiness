@@ -1,0 +1,38 @@
+{
+  "milestones": [
+    { "id": "m1", "startWeek": 4, "endWeek": 5 },
+    { "id": "m2", "startWeek": 6, "endWeek": 8 },
+    { "id": "m3", "startWeek": 9, "endWeek": 12 },
+    { "id": "m4", "startWeek": 13, "endWeek": 15 },
+    { "id": "m5", "startWeek": 16, "endWeek": 19 },
+    { "id": "m6", "startWeek": 20, "endWeek": 23 },
+    { "id": "m7", "startWeek": 24, "endWeek": 28 },
+    { "id": "m8", "startWeek": 29, "endWeek": 33 },
+    { "id": "m9", "startWeek": 34, "endWeek": 36 },
+    { "id": "m10", "startWeek": 37, "endWeek": 40 }
+  ],
+  "pointItems": [
+    { "weekGroup": "m1", "category": "검사", "title": "임신 확인 및 초기 산전 검사", "description": "병원에 방문하여 초음파로 아기집을 확인합니다. 광주시 보건소(모자보건실)에 방문하면 초기 산전검사를 무료로 받을 수 있습니다." },
+    { "weekGroup": "m2", "category": "검사", "title": "태아 심장소리 확인", "description": "병원에서 태아의 심장 박동을 확인합니다." },
+    { "weekGroup": "m2", "category": "복지", "title": "국민행복카드 및 임산부 주차증", "description": "국민행복카드를 발급받고, 광주시 보건소 등록 시 임산부 주차증과 뱃지를 수령하세요." },
+    { "weekGroup": "m3", "category": "검사", "title": "1차 기형아 검사", "description": "초음파를 통해 태아의 목투명대 두께를 측정합니다." },
+    { "weekGroup": "m3", "category": "복지", "title": "태아보험 가입", "description": "22주 이전에 태아보험 가입을 완료하는 것이 좋습니다." },
+    { "weekGroup": "m4", "category": "검사", "title": "2차 기형아 검사 (혈액)", "description": "혈액 검사를 통해 염색체 이상 여부를 확인합니다." },
+    { "weekGroup": "m5", "category": "검사", "title": "정기 검진", "description": "기본 초음파 검사를 진행합니다." },
+    { "weekGroup": "m6", "category": "검사", "title": "정밀 초음파 검사", "description": "태아의 장기들이 잘 형성되었는지 구조적 이상을 정밀하게 확인합니다." },
+    { "weekGroup": "m7", "category": "검사", "title": "임당 검사 및 입체 초음파", "description": "임당 검사를 통해 혈당 관리를 확인하고, 입체 초음파로 아기의 얼굴을 봅니다." },
+    { "weekGroup": "m8", "category": "검사", "title": "백일해 주사 접종", "description": "임산부 본인뿐만 아니라 주 양육자도 함께 접종하는 것을 권장합니다." },
+    { "weekGroup": "m9", "category": "검사", "title": "보건소 막달 검사 지원", "description": "보건소에서 분만 전 검사(전혈, B형간염 등)를 무료로 지원받으세요." },
+    { "weekGroup": "m9", "category": "복지", "title": "유축기 대여 및 산후조리비 신청", "description": "광주시 보건소 유축기 대여를 문의하고, 경기도 산후조리비 지원(지역화폐)을 알아두세요." },
+    { "weekGroup": "m9", "category": "준비물", "title": "출산 가방 싸기", "description": "언제든 병원에 갈 수 있도록 출산 가방을 싸두고 아기 용품을 세탁해 둡니다." },
+    { "weekGroup": "m10", "category": "검사", "title": "매주 정기 검진 및 태동 검사", "description": "1주일 간격으로 방문하여 양수량과 태아 상태를 확인합니다." }
+  ],
+  "durationItems": [
+    { "id": "d1", "startWeek": 4, "endWeek": 40, "category": "영양제", "title": "비타민D & 유산균", "description": "임신 전 기간 복용 (면역력 증진 및 철분제로 인한 변비 예방)" },
+    { "id": "d2", "startWeek": 4, "endWeek": 40, "category": "영양제", "title": "엽산", "description": "초기 신경관 발달에 필수이며 출산까지 세포 분열과 혈액 생성에 도움을 줍니다. (중기부터는 종합비타민에 포함된 엽산으로 대체 가능)" },
+    { "id": "d3", "startWeek": 16, "endWeek": 40, "category": "영양제", "title": "철분제", "description": "혈액량 증가로 인한 빈혈 예방 (광주시 보건소에서 무료 지원). 오렌지 주스와 함께 먹으면 흡수율 상승" },
+    { "id": "d4", "startWeek": 14, "endWeek": 35, "category": "영양제", "title": "오메가3", "description": "태아 두뇌 발달에 도움. 지혈을 방해할 수 있어 막달(36주~)에는 복용 중단" },
+    { "id": "d5", "startWeek": 20, "endWeek": 40, "category": "영양제", "title": "칼슘", "description": "태아 뼈 형성. 철분제와 시간 간격을 두고 복용하세요." },
+    { "id": "d6", "startWeek": 9, "endWeek": 40, "category": "태교", "title": "태명 부르며 교감하기", "description": "행복이의 청각이 발달하므로 부드러운 목소리를 자주 들려주세요." }
+  ]
+}
