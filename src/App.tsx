@@ -23,6 +23,8 @@ interface DurationItem {
   category: string;
   title: string;
   description: string;
+  productName?: string;
+  productLink?: string;
 }
 
 const DUE_DATE = new Date('2027-04-18T00:00:00+09:00');
@@ -99,9 +101,25 @@ function App() {
           <h3 className="text-xs font-bold text-green-700 mb-2">💊 복용 중인 영양제</h3>
           <div className="flex flex-wrap gap-2">
             {currentSupplements.map(s => (
-              <span key={s.id} className="bg-white text-green-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-green-100">
-                {s.title}
-              </span>
+              s.productLink ? (
+                <a 
+                  key={s.id} 
+                  href={s.productLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group relative bg-white text-green-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-green-200 hover:bg-green-50 hover:border-green-400 transition-colors cursor-pointer flex items-center gap-1"
+                >
+                  {s.title} <span className="text-[10px] opacity-70">🛒</span>
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-max bg-gray-800 text-white text-[11px] font-normal px-2.5 py-1.5 rounded shadow-lg z-50">
+                    {s.productName || s.title}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+                  </div>
+                </a>
+              ) : (
+                <span key={s.id} className="bg-white text-green-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-green-100">
+                  {s.title}
+                </span>
+              )
             ))}
           </div>
         </div>
@@ -247,8 +265,22 @@ function App() {
                                 ${isPast ? 'bg-gray-400' : (d.category === '영양제' ? 'bg-green-500' : 'bg-pink-400')}`}>
                                 {d.category} 시작
                               </span>
-                              <span className={`text-sm font-bold ${isPast ? 'text-gray-500' : 'text-gray-800'}`}>
+                              <span className={`text-sm font-bold flex items-center gap-1.5 ${isPast ? 'text-gray-500' : 'text-gray-800'}`}>
                                 {d.title}
+                                {d.productLink && !isPast && (
+                                  <a 
+                                    href={d.productLink} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="group relative inline-flex items-center justify-center w-5 h-5 bg-white border border-gray-200 text-gray-500 rounded-full hover:bg-rose-50 hover:text-rose-500 hover:border-rose-200 transition-colors shadow-sm"
+                                  >
+                                    <span className="text-[10px]">🛒</span>
+                                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 hidden group-hover:block w-max bg-gray-800 text-white text-[11px] font-normal px-2.5 py-1.5 rounded shadow-lg z-50">
+                                      {d.productName || d.title} 구매 검색
+                                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+                                    </div>
+                                  </a>
+                                )}
                               </span>
                             </div>
                             <p className={`text-xs ${isPast ? 'text-gray-400' : 'text-gray-600'}`}>
