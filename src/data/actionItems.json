@@ -147,9 +147,9 @@
       "endWeek": 44,
       "category": "영양제",
       "title": "유산균",
-      "description": "임신 중 흔한 변비 예방과 질 건강을 위해 임신 초기부터 수유기까지 섭취하세요.",
-      "productName": "엘레나 질 유산균",
-      "productLink": "https://search.shopping.naver.com/search/all?query=%EC%97%98%EB%A0%88%EB%82%98+%EC%9C%A0%EC%82%B0%EA%B7%A0"
+      "description": "임신 중 흔한 변비 예방과 장/질 건강을 위해 임신 초기부터 수유기까지 꾸준히 섭취하세요.",
+      "productName": "맘앤대디 유산균",
+      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%A7%98%EC%95%A4%EB%8C%80%EB%94%94+%EC%9C%A0%EC%82%B0%EA%B7%A0"
     },
     {
       "id": "d1_2",
@@ -157,9 +157,9 @@
       "endWeek": 44,
       "category": "영양제",
       "title": "비타민D",
-      "description": "태아의 뼈 형성 및 면역력을 위해 필수입니다. 액상 형태가 흡수율이 좋습니다.",
-      "productName": "닥터써니디 드롭스 1000IU",
-      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EC%8D%A8%EB%8B%88%EB%94%94+%EB%93%9C%EB%A1%AD%EC%8A%A4+1000"
+      "description": "태아의 뼈 형성 및 면역력, 조산 예방을 위해 필수입니다.",
+      "productName": "맘앤대디 비타민D",
+      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%A7%98%EC%95%A4%EB%8C%80%EB%94%94+%EB%B9%84%ED%83%80%EB%AF%BCD"
     },
     {
       "id": "d2",
@@ -167,9 +167,9 @@
       "endWeek": 40,
       "category": "영양제",
       "title": "엽산",
-      "description": "태아 신경관 발달에 필수. (흡수율이 높은 '활성형 엽산'을 추천합니다.)",
-      "productName": "트루엔 활성엽산 800 또는 솔가 엽산 800",
-      "productLink": "https://search.shopping.naver.com/search/all?query=%ED%8A%B8%EB%A3%A8%EC%97%94+%ED%99%9C%EC%84%B1%EC%97%BD%EC%82%B0"
+      "description": "태아 신경관 발달에 필수. 알약이 작아 목넘김이 편하고 흡수율이 높은 제품을 추천합니다.",
+      "productName": "맘앤대디 엽산 800 미니",
+      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%A7%98%EC%95%A4%EB%8C%80%EB%94%94+%EC%97%BD%EC%82%B0+800+%EB%AF%B8%EB%8B%88"
     },
     {
       "id": "d3",
@@ -177,9 +177,9 @@
       "endWeek": 44,
       "category": "영양제",
       "title": "철분제",
-      "description": "혈액량 증가로 인한 빈혈 예방. 위장장애와 변비가 적은 '종근당 볼그레 액상'이 가장 유명하나 약국에서만 팝니다. 온라인 구매 시엔 닥터맘스나 뉴트리코어를 추천합니다.",
-      "productName": "볼그레 액상(약국 전용) 또는 닥터맘스 철분",
-      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%8B%A5%ED%84%B0%EB%A7%98%EC%8A%A4+%EC%B2%A0%EB%B6%84"
+      "description": "혈액량 증가로 인한 빈혈 예방. 위장장애와 변비가 적은 제품으로 16주부터 출산 후까지 꾸준히 복용합니다.",
+      "productName": "맘앤대디 철분제",
+      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%A7%98%EC%95%A4%EB%8C%80%EB%94%94+%EC%B2%A0%EB%B6%84%EC%A0%9C"
     },
     {
       "id": "d4",
@@ -187,29 +187,39 @@
       "endWeek": 35,
       "category": "영양제",
       "title": "오메가3",
-      "description": "태아 두뇌 발달 도움. 중금속 위험이 없고 비린내가 덜한 '식물성 rTG' 오메가3를 선택하세요. 지혈 방해로 35주엔 중단합니다.",
-      "productName": "트루엔 식물성 알티지 오메가3",
-      "productLink": "https://search.shopping.naver.com/search/all?query=%ED%8A%B8%EB%A3%A8%EC%97%94+%EC%8B%9D%EB%AC%BC%EC%84%B1+%EC%98%A4%EB%A9%94%EA%B0%803"
+      "description": "태아 두뇌 발달 도움. 중금속 위험이 적은 식물성 오메가3를 선택하세요. 지혈 방해 우려로 출산 한 달 전(35주)엔 중단합니다.",
+      "productName": "맘앤대디 오메가3",
+      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%A7%98%EC%95%A4%EB%8C%80%EB%94%94+%EC%98%A4%EB%A9%94%EA%B0%803"
     },
     {
       "id": "d5",
       "startWeek": 20,
       "endWeek": 44,
       "category": "영양제",
-      "title": "칼슘제",
-      "description": "태아 뼈 형성에 필수. 철분제와 흡수 경쟁을 하므로 최소 2시간 간격을 둡니다.",
-      "productName": "쁘띠앤 칼마디 (칼슘+마그네슘+비타민D)",
-      "productLink": "https://search.shopping.naver.com/search/all?query=%EC%81%98%EB%9D%A0%EC%95%A4+%EC%B9%BC%EB%A7%88%EB%94%94"
+      "title": "칼슘",
+      "description": "20주부터 태아의 뼈가 급격히 성장하므로 칼슘 보충이 필수입니다. 철분제와 흡수 경쟁을 하므로 최소 2시간 간격을 두고 복용하세요.",
+      "productName": "맘앤대디 칼슘",
+      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%A7%98%EC%95%A4%EB%8C%80%EB%94%94+%EC%B9%BC%EC%8A%98"
     },
     {
       "id": "d5_opt1",
       "startWeek": 20,
       "endWeek": 44,
       "category": "영양제",
-      "title": "마그네슘 (선택)",
-      "description": "임신 중후반기 잦은 다리 경련(쥐남)과 불면증 완화에 매우 좋습니다. 단독 복용보단 칼슘과 혼합된 제품(칼마디)을 추천합니다.",
-      "productName": "쁘띠앤 칼마디 (마그네슘 포함)",
-      "productLink": "https://search.shopping.naver.com/search/all?query=%EC%81%98%EB%9D%A0%EC%95%A4+%EC%B9%BC%EB%A7%88%EB%94%94"
+      "title": "마그네슘",
+      "description": "임신 중후반기(20주 이후) 잦은 다리 경련(쥐남)과 불면증, 자궁 수축 완화에 매우 좋습니다.",
+      "productName": "맘앤대디 마그네슘",
+      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%A7%98%EC%95%A4%EB%8C%80%EB%94%94+%EB%A7%88%EA%B7%B8%EB%84%A4%EC%8A%98"
+    },
+    {
+      "id": "d5_opt3",
+      "startWeek": 20,
+      "endWeek": 44,
+      "category": "영양제",
+      "title": "칼마디 (칼슘+마그네슘+비타민D)",
+      "description": "20주부터는 개별 복용이 번거롭다면 칼슘, 마그네슘, 비타민D가 혼합된 '칼마디' 제품 하나로 섭취하는 것이 효율적입니다.",
+      "productName": "맘앤대디 칼마디",
+      "productLink": "https://search.shopping.naver.com/search/all?query=%EB%A7%98%EC%95%A4%EB%8C%80%EB%94%94+%EC%B9%BC%EB%A7%88%EB%94%94"
     },
     {
       "id": "d5_opt2",
