@@ -13,7 +13,7 @@ interface HeaderProps {
 export function Header({ today, period, activeCategory, onCategoryChange }: HeaderProps) {
   return (
     <header className="bg-rose-500 text-white pt-6 px-6 pb-4 rounded-b-3xl shadow-md sticky top-0 z-30 flex flex-col">
-      <h1 className="text-2xl font-bold mb-1">행복이를 기다리며 🌱</h1>
+      <h1 className="text-2xl font-bold mb-1">우리 딸 행복이를 기다리며 🎀</h1>
       <p className="text-rose-100 text-sm mb-4">출산 예정일: {DUE_DATE.toKoreanString()}</p>
 
       <div className="bg-white/20 p-4 rounded-xl backdrop-blur-sm mb-4">
