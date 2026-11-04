@@ -1,32 +1,19 @@
-# React + TypeScript + Vite
+# 행복이를 기다리며 🌱
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+출산 예정일(2027-04-18) 기준으로 임신 주수를 계산하고, 주차별로 챙길 일(검사·영양제·복지·준비물·태교)을 타임라인으로 보여주는 정적 웹페이지입니다. GitHub Pages로 배포됩니다.
 
-Currently, two official plugins are available:
+## 개발
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # 개발 서버
+npm test         # 단위 테스트 (Vitest)
+npm run build    # 타입체크 + 프로덕션 빌드
+npm run lint     # oxlint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+특정 날짜의 화면을 보려면 `?current_date=YYYY-MM-DD` 쿼리 파라미터를 붙입니다. 값이 없거나 잘못되면 오늘(KST)로 대체됩니다.
+
+## 데이터
+
+주차별 항목은 [`src/data/actionItems.json`](src/data/actionItems.json)에서 관리합니다. 구조와 설계는 [`.claude/docs/architecture.md`](.claude/docs/architecture.md)를 참고하세요.
