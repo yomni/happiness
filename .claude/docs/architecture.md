@@ -14,20 +14,34 @@
 
 ## 2. 디렉토리 구조
 
-> 현재 구조 기준. `components/`, `hooks/` 분리는 #8에서 진행 예정이며, 그 전까지 UI와 계산 로직이 `App.tsx`에 함께 있습니다.
-
 ```text
 happiness/
 ├── .claude/docs/           # 설계 문서 (본 문서)
 ├── .github/                # 이슈 템플릿, GitHub Pages 배포 워크플로우
 ├── public/                 # 파비콘 등 정적 에셋
 ├── src/
+│   ├── components/         # 표시 전용 컴포넌트
+│   │   ├── Header.tsx             # 예정일, 오늘 날짜, 주수·D-Day, 카테고리 필터
+│   │   ├── Timeline.tsx           # milestone 목록, 현재 주차 자동 스크롤
+│   │   ├── MilestoneSection.tsx   # 구간 하나 (트랙, 기간 카드, 포인트 카드)
+│   │   ├── DurationCards.tsx      # 기간 항목 시작/종료 카드
+│   │   ├── PointCard.tsx          # 일회성 항목 카드
+│   │   ├── DashboardCard.tsx      # 이번 주 영양제·루틴 요약
+│   │   ├── MobileSummarySheet.tsx # 모바일 플로팅 버튼 + 바텀시트
+│   │   └── ProductLink.tsx        # 쇼핑 링크 + 툴팁
 │   ├── data/
-│   │   └── actionItems.json   # 주차별 Action Item 데이터
-│   ├── utils/
-│   │   ├── dateUtils.ts       # 주차 계산, KST 날짜 포맷
-│   │   └── pregnancyPeriod.ts # 주차/D-Day 값 객체 (미연결, #8에서 통합 예정)
-│   ├── App.tsx             # 타임라인·대시보드 UI 및 필터링 로직
+│   │   ├── actionItems.json   # 주차별 Action Item 데이터
+│   │   └── actionItems.ts     # JSON을 ActionItems 타입으로 노출
+│   ├── hooks/
+│   │   └── useCurrentWeek.ts  # 날짜 파라미터 → 오늘, 주수, 타임라인 주차
+│   ├── utils/                 # 순수 로직 (모두 *.test.ts 동반)
+│   │   ├── calendarDate.ts    # 시간대 없는 날짜 VO, KST 오늘 날짜
+│   │   ├── currentDate.ts     # ?current_date 파싱 및 폴백
+│   │   ├── pregnancyPeriod.ts # 주수/D-Day/삼분기 VO
+│   │   └── timeline.ts        # milestone 상태, 기간 항목 필터링
+│   ├── constants.ts        # 예정일, 카테고리 필터, 카테고리 테마 색상
+│   ├── types.ts            # 데이터 타입
+│   ├── App.tsx             # 레이아웃 조립
 │   └── main.tsx
 ├── CLAUDE.md               # 프로젝트 규칙
 └── vite.config.ts          # base: './' (GitHub Pages 서브경로 대응)
@@ -70,12 +84,12 @@ happiness/
 ```
 
 ### 3.1. 핵심 로직 (날짜 및 포커싱)
-1. **날짜 결정**:
-   - `URLSearchParams`로 `current_date`(`YYYY-MM-DD`)를 조회해 `T00:00:00+09:00`(KST 자정)으로 파싱.
-   - 없거나 유효하지 않으면 현재 시각(`new Date()`)으로 폴백. 화면 표기는 `formatDateString`이 `Asia/Seoul` 기준으로 변환.
-2. **주차 계산** (`calculatePregnancyWeek`):
-   - 출산예정일(2027-04-18)을 **임신 40주 0일**로 보고, 280일 전을 임신 시작일로 삼음.
-   - 경과 일수 `floor(days / 7)`을 주차로 사용 (0주는 1로 보정, 시작 전은 0, 출산 후는 44주로 상한).
-   - `PregnancyPeriod`는 `floor(days / 7) + 1`을 써서 1주 차이가 남. #8에서 통합 예정.
-3. **UI 포커싱**:
-   - 현재 주차가 속한 milestone 요소에 `ref`를 걸고, 주차·카테고리 변경 시 `scrollIntoView({ behavior: 'smooth', block: 'center' })` 호출.
+1. **날짜 결정** (`resolveCurrentDate`):
+   - `?current_date=YYYY-MM-DD`를 `CalendarDate.parse`로 검증 (존재하지 않는 날짜도 거부).
+   - 없거나 잘못되면 `CalendarDate.todayInKST()`로 폴백. 브라우저 시간대와 무관하게 Asia/Seoul 달력 날짜를 사용.
+2. **주수 계산** (`PregnancyPeriod.fromDueDate`):
+   - 예정일을 **40주 0일**로 보고 `경과일 = 280 - (오늘 → 예정일 일수)`. 임신 시작 전은 0일로 고정.
+   - 표기는 "N주 M일" (N = `floor(경과일/7)`, M = 나머지). D-Day는 `D-n` / `D-Day` / `D+n`.
+   - 날짜 차이는 UTC 자정 기준으로 계산해 시간대·서머타임 영향이 없음.
+3. **타임라인 주차** (`clampToTimeline`): N이 마지막 milestone(44주)을 넘으면 44로 고정해 마지막 구간을 "이번 주"로 유지.
+4. **UI 포커싱**: 현재 구간 `<section>`에 `ref`를 걸고, 주차·카테고리 변경 300ms 후 `scrollIntoView({ behavior: 'smooth', block: 'center' })`. 언마운트·재실행 시 타이머 정리.

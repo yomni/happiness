@@ -4,7 +4,7 @@
 이 파일은 Claude Code(또는 개발자)가 본 프로젝트의 코드를 작성하거나 수정할 때 준수해야 할 규칙을 정의합니다.
 
 - 설계 문서: [.claude/docs/architecture.md](.claude/docs/architecture.md)
-- 명령어: `npm run dev` (개발 서버), `npm run build` (타입체크 + 빌드), `npm run lint` (oxlint)
+- 명령어: `npm run dev` (개발 서버), `npm test` (Vitest), `npm run build` (타입체크 + 빌드), `npm run lint` (oxlint)
 - 날짜 디버깅: `?current_date=YYYY-MM-DD` 쿼리 파라미터
 
 ## 1. 환경 및 배포 제약사항 (Strict Static Site)
@@ -25,3 +25,5 @@
 - **TypeScript 필수**: 모든 컴포넌트 Props와 주차별 데이터는 명확한 인터페이스(Interface/Type)를 가져야 합니다.
 - **날짜 모의(Mocking) 테스트 가능성**: `current_date` 파라미터를 통해 미래나 과거의 임신 주차별 화면을 디버깅할 수 있어야 합니다. 파라미터가 유효한 날짜 포맷(`YYYY-MM-DD`)이 아니면 오늘 날짜(KST)로 폴백해야 합니다.
 - 데이터와 뷰의 분리: 주차별 계산 로직이나 데이터를 가공하는 로직은 View 컴포넌트 내부에 두지 않고 `utils`나 custom `hooks`로 분리합니다.
+- **주수 표기**: 한국 산부인과 관례인 "N주 M일"(둘 다 0부터, 예정일 = 40주 0일)을 따릅니다. 계산은 `PregnancyPeriod`만 사용하고, 날짜는 시간대 영향을 받지 않는 `CalendarDate`로 다룹니다.
+- **테스트**: `utils`의 순수 로직은 반드시 단위 테스트를 동반합니다.
