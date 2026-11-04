@@ -1,6 +1,11 @@
 # Project Rules: 행복이의 탄생
 
-이 파일은 향후 AI(또는 개발자)가 본 프로젝트의 코드를 작성하거나 수정할 때 준수해야 할 규칙을 정의합니다.
+출산 예정일(2027-04-18) 기준으로 임신 주차별 Action Item(검사·영양제·복지·준비물·태교)을 보여주는 정적 웹페이지입니다.
+이 파일은 Claude Code(또는 개발자)가 본 프로젝트의 코드를 작성하거나 수정할 때 준수해야 할 규칙을 정의합니다.
+
+- 설계 문서: [.claude/docs/architecture.md](.claude/docs/architecture.md)
+- 명령어: `npm run dev` (개발 서버), `npm run build` (타입체크 + 빌드), `npm run lint` (oxlint)
+- 날짜 디버깅: `?current_date=YYYY-MM-DD` 쿼리 파라미터
 
 ## 1. 환경 및 배포 제약사항 (Strict Static Site)
 - 본 프로젝트는 **GitHub Pages** 전용 정적 웹사이트입니다.
@@ -13,7 +18,7 @@
 
 ## 3. UI/UX 개발 원칙
 - **Mobile First**: 스마트폰 뷰포트를 최우선으로 설계합니다. 모든 Tailwind CSS 클래스는 모바일에 먼저 맞춰 작성하고, 태블릿이나 데스크탑은 화면이 너무 넓어 보이지 않도록 `max-w-md` 또는 `max-w-lg`로 래핑하여 중앙 정렬합니다.
-- **시각적 구분**: 카테고리(`checkup`, `supplement`, `welfare`, `prenatal`, `preparation`)별로 명확하고 일관된 테마 색상(Tailwind 컬러 팔레트)을 적용하여 구분감을 줍니다.
+- **시각적 구분**: 카테고리(`검사`, `영양제`, `복지`, `준비물`, `태교`)별로 명확하고 일관된 테마 색상(Tailwind 컬러 팔레트)을 적용하여 구분감을 줍니다.
 - **접근성(Accessibility)**: 색상뿐만 아니라 텍스트 라벨과 아이콘을 활용하여 정보를 직관적으로 전달합니다.
 
 ## 4. 코드 스타일 및 아키텍처
