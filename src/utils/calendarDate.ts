@@ -26,18 +26,16 @@ export class CalendarDate {
     if (!match) return null;
 
     const [year, month, day] = match.slice(1).map(Number);
-    const probe = new Date(Date.UTC(year, month - 1, day));
-    const exists =
-      probe.getUTCFullYear() === year && probe.getUTCMonth() === month - 1 && probe.getUTCDate() === day;
-
-    return exists ? new CalendarDate(year, month, day) : null;
+    return CalendarDate.of(year, month, day);
   }
 
   /** The current calendar day in Asia/Seoul, regardless of the browser timezone. */
   static todayInKST(now: Date = new Date()): CalendarDate {
     const parts = KST_DATE_FORMAT.formatToParts(now);
     const part = (type: Intl.DateTimeFormatPartTypes) => Number(parts.find((p) => p.type === type)?.value);
-    return new CalendarDate(part('year'), part('month'), part('day'));
+    const today = CalendarDate.of(part('year'), part('month'), part('day'));
+    if (!today) throw new Error(`Unexpected KST date parts: ${JSON.stringify(parts)}`);
+    return today;
   }
 
   /** Signed number of days from this date to `other`. */
@@ -48,6 +46,16 @@ export class CalendarDate {
   toString(): string {
     const pad = (n: number) => String(n).padStart(2, '0');
     return `${this.year}-${pad(this.month)}-${pad(this.day)}`;
+  }
+
+  /** Single creation path that enforces the "real calendar day" invariant. */
+  private static of(year: number, month: number, day: number): CalendarDate | null {
+    if (![year, month, day].every(Number.isInteger)) return null;
+
+    const probe = new Date(Date.UTC(year, month - 1, day));
+    const exists =
+      probe.getUTCFullYear() === year && probe.getUTCMonth() === month - 1 && probe.getUTCDate() === day;
+    return exists ? new CalendarDate(year, month, day) : null;
   }
 
   /** e.g. 2027년 4월 18일 */
