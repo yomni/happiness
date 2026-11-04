@@ -10,7 +10,7 @@
   - **이유**: 모바일 친화적(Mobile-first)인 세로형 UI를 빠르게 구축할 수 있습니다. 유틸리티 클래스 기반이라 카테고리별(검사, 영양제 등) 시각적 색상/디자인 구분을 직관적으로 적용하기 좋습니다.
 - **상태 관리 및 라우팅**: React `useState` & 브라우저 `URLSearchParams` API
   - **이유**: 복잡한 라우팅보다 `?current_date=yyyy-mm-dd` 단일 파라미터만 처리하면 되므로, 무거운 Router 라이브러리(React Router 등) 없이 `URLSearchParams` 만으로 파라미터를 읽어 처리하여 번들 사이즈를 줄입니다.
-- **배포 (Deployment)**: GitHub Actions + GitHub Pages (`gh-pages`)
+- **배포 (Deployment)**: GitHub Actions(`actions/deploy-pages`) + GitHub Pages, `main` 푸시 시 자동 배포
 
 ## 2. 디렉토리 구조
 
@@ -69,12 +69,13 @@ happiness/
 }
 ```
 
-### 3.1. 핵심 아키텍처 로직 (날짜 및 포커싱)
-1. **날짜 결정**: 
-   - `URLSearchParams`를 통해 `current_date`를 조회.
-   - 없을 경우 `new Date().toLocaleString("en-US", {timeZone: "Asia/Seoul"})` 등을 이용해 KST 기준 오늘 날짜를 구함.
-2. **주차 계산**:
-   - `출산예정일(2027-04-18)`은 통상 **임신 40주 0일**로 계산됨.
-   - 현재일과 출산예정일의 차이를 계산하여 현재 몇 주 몇 일 차인지 도출.
+### 3.1. 핵심 로직 (날짜 및 포커싱)
+1. **날짜 결정**:
+   - `URLSearchParams`로 `current_date`(`YYYY-MM-DD`)를 조회해 `T00:00:00+09:00`(KST 자정)으로 파싱.
+   - 없거나 유효하지 않으면 현재 시각(`new Date()`)으로 폴백. 화면 표기는 `formatDateString`이 `Asia/Seoul` 기준으로 변환.
+2. **주차 계산** (`calculatePregnancyWeek`):
+   - 출산예정일(2027-04-18)을 **임신 40주 0일**로 보고, 280일 전을 임신 시작일로 삼음.
+   - 경과 일수 `floor(days / 7)`을 주차로 사용 (0주는 1로 보정, 시작 전은 0, 출산 후는 44주로 상한).
+   - `PregnancyPeriod`는 `floor(days / 7) + 1`을 써서 1주 차이가 남. #8에서 통합 예정.
 3. **UI 포커싱**:
-   - 렌더링 후, 현재 주차에 해당하는 DOM 요소의 `id`를 찾아 `scrollIntoView({ behavior: 'smooth' })`를 호출하여 자동 포커싱.
+   - 현재 주차가 속한 milestone 요소에 `ref`를 걸고, 주차·카테고리 변경 시 `scrollIntoView({ behavior: 'smooth', block: 'center' })` 호출.
