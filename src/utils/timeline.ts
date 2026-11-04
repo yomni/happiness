@@ -2,6 +2,7 @@ import type { Category, CategoryFilter, DurationItem, Milestone, MilestoneStatus
 
 /** Weeks past the last milestone stay pinned to it so the final section remains "current". */
 export function clampToTimeline(week: number, milestones: Milestone[]): number {
+  if (milestones.length === 0) return week;
   const lastWeek = Math.max(...milestones.map((m) => m.endWeek));
   return Math.min(week, lastWeek);
 }

@@ -10,10 +10,16 @@ interface ProductLinkProps {
 /** External shopping link with a hover tooltip. */
 export function ProductLink({ href, tooltip, className, children }: ProductLinkProps) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={`group relative ${className}`}>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${tooltip} (새 창)`}
+      className={`group relative ${className}`}
+    >
       {children}
       <span
-        role="tooltip"
+        aria-hidden="true"
         className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-max bg-gray-800 text-white text-[11px] font-normal px-2.5 py-1.5 rounded shadow-lg z-50"
       >
         {tooltip}

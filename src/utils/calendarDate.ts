@@ -1,10 +1,10 @@
 const DATE_PATTERN = /^(\d{4})-(\d{2})-(\d{2})$/;
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
-const KST_DATE_FORMAT = new Intl.DateTimeFormat('sv-SE', {
+const KST_DATE_FORMAT = new Intl.DateTimeFormat('en-US', {
   timeZone: 'Asia/Seoul',
   year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
+  month: 'numeric',
+  day: 'numeric',
 });
 
 /** Immutable calendar day (no time, no timezone). Day arithmetic is done in UTC so DST never shifts it. */
@@ -35,7 +35,9 @@ export class CalendarDate {
 
   /** The current calendar day in Asia/Seoul, regardless of the browser timezone. */
   static todayInKST(now: Date = new Date()): CalendarDate {
-    return CalendarDate.parse(KST_DATE_FORMAT.format(now))!;
+    const parts = KST_DATE_FORMAT.formatToParts(now);
+    const part = (type: Intl.DateTimeFormatPartTypes) => Number(parts.find((p) => p.type === type)?.value);
+    return new CalendarDate(part('year'), part('month'), part('day'));
   }
 
   /** Signed number of days from this date to `other`. */

@@ -33,6 +33,10 @@ describe('clampToTimeline', () => {
   it('caps weeks after the last milestone to its end week', () => {
     expect(clampToTimeline(50, milestones)).toBe(44);
   });
+
+  it('returns the week unchanged when there are no milestones', () => {
+    expect(clampToTimeline(16, [])).toBe(16);
+  });
 });
 
 describe('milestoneStatus', () => {

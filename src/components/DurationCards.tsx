@@ -31,9 +31,7 @@ export function DurationStartCard({ item, isPast }: DurationCardProps) {
               tooltip={`${item.productName || item.title} 구매 검색`}
               className="inline-flex items-center justify-center w-5 h-5 bg-white border border-gray-200 text-gray-500 rounded-full hover:bg-rose-50 hover:text-rose-500 hover:border-rose-200 transition-colors shadow-sm"
             >
-              <span className="text-[10px]" aria-label="구매 검색">
-                🛒
-              </span>
+              <span className="text-[10px]">🛒</span>
             </ProductLink>
           )}
         </span>
